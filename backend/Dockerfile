@@ -5,7 +5,7 @@ FROM php:8.0-apache
 WORKDIR /var/www/html
 
 # Copy the current directory contents into the container
-COPY . /var/www/html/
+COPY ./backend/ /var/www/html/
 
 # Install necessary PHP extensions for PostgreSQL
 RUN apt-get update && apt-get install -y libpq-dev \
