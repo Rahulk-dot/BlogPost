@@ -16,3 +16,6 @@ EXPOSE 80
 
 # Set the command to run Apache in the foreground
 CMD ["apache2-foreground"]
+
+
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
