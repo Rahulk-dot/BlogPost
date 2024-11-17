@@ -1,17 +1,10 @@
-# Use the official PHP image from Docker Hub
-FROM php:7.4-apache
+FROM php:apache
 
-# Set the working directory in the container
-WORKDIR /var/www/html
+# Copy backend files
+COPY ./backend /var/www/html
 
-# Copy the contents of the current directory to the container
-COPY . .
+# Install necessary dependencies (if any)
+RUN docker-php-ext-install mysqli
 
-# Install dependencies (if you have any)
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev && docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install gd
-
-# Expose port 80
-EXPOSE 80
-
-# Start Apache in the foreground
-CMD ["apache2-foreground"]
+# Serve frontend as static files
+COPY ./frontend /var/www/html/frontend
