@@ -1,6 +1,6 @@
 <?php
 // Load any necessary utility functions or configurations
-require("./utils/functions.php");
+require("./api/utils/functions.php");
 
 // Basic status check for the backend
 header("Content-Type: application/json");
